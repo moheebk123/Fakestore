@@ -7,13 +7,26 @@ import {
 } from "@mui/material";
 import propTypes from "prop-types";
 
-const Product = ({ title, image, price }) => {
+const Product = ({
+  title,
+  image,
+  price,
+  showProduct,
+  changeProductDetails,
+}) => {
   const handleProductPage = () => {
-    console.log("show page")
-  }
+    showProduct();
+    changeProductDetails(title);
+  };
 
   return (
-    <Card className="basis-1/3" sx={{boxShadow: "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 10px 0px"}}>
+    <Card
+      className="basis-1/3"
+      sx={{
+        boxShadow:
+          "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 10px 0px",
+      }}
+    >
       <CardActionArea onClick={handleProductPage}>
         <img
           src={image}
@@ -46,10 +59,8 @@ Product.propTypes = {
   title: propTypes.string.isRequired,
   image: propTypes.string.isRequired,
   price: propTypes.number.isRequired,
-  rating: propTypes.shape({
-    rate: propTypes.number.isRequired,
-    count: propTypes.number.isRequired,
-  }).isRequired,
+  showProduct: propTypes.func.isRequired,
+  changeProductDetails: propTypes.func.isRequired,
 };
 
 export default Product;

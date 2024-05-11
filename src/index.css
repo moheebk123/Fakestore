@@ -23,5 +23,6 @@ body{
         gap: 1.7em;
         max-width: 1200px;
         min-height: 100vh;
+        position: relative;
     }
 }

@@ -3,10 +3,22 @@ import Category from "./Components/Category";
 import Search from "./Components/Search";
 import ProductBox from "./Components/ProductBox";
 import { useEffect, useState } from "react";
+import ProductDetail from "./Components/ProductDetail";
 
 const App = () => {
   const [products, setProducts] = useState([]);
   const [defaultProducts, setDefaultProducts] = useState([]);
+  const [productDetails, setProductDetails] = useState({
+    title: "",
+    description: "",
+    image: "",
+    price: 0,
+    rating: {
+      rate: 0,
+      count: 0
+    }
+  });
+  const [showProductDetails, setShowProductDetails] = useState(false);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -36,14 +48,40 @@ const App = () => {
       const title = product.title.toLowerCase();
       return title.includes(searchedName);
     });
-    setProducts(searchedProducts)
+    setProducts(searchedProducts);
+  };
+
+  const showProduct = () => {
+    setShowProductDetails(true);
+  };
+
+  const hideProduct = () => {
+    setShowProductDetails(false);
+  };
+
+  const changeProductDetails = (title) => {
+    const detailProduct = products.filter((product) =>
+      product.title.includes(title)
+    );
+    const newProductDetail = detailProduct[0];
+    setProductDetails(newProductDetail);
   };
 
   return (
     <>
       <Search searchProduct={searchProduct} />
       <Category changeCategory={changeCategory} />
-      <ProductBox products={products} />
+      <ProductBox
+        showProduct={showProduct}
+        changeProductDetails={changeProductDetails}
+        products={products}
+      />
+      {showProductDetails && (
+        <ProductDetail
+          productDetails={productDetails}
+          hideProduct={hideProduct}
+        />
+      )}
     </>
   );
 };

@@ -75,12 +75,12 @@ const App = () => {
       product.title.includes(title)
     );
     const newCartProduct = updatedProduct[0];
-    setCartProducts((prev) =>[ newCartProduct, ...prev ]);
+    setCartProducts((prev) => [newCartProduct, ...prev]);
   };
 
   const deleteCartProduct = (title) => {
-    const newCartProduct = cartProducts.filter((product) =>
-      !product.title.includes(title)
+    const newCartProduct = cartProducts.filter(
+      (product) => !product.title.includes(title)
     );
     setCartProducts(newCartProduct);
   };

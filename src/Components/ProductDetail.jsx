@@ -6,9 +6,9 @@ const ProductDetail = ({ addCartProduct, productDetails, hideProduct }) => {
   const { title, description, category, price, image, rating } = productDetails;
 
   const handleChangeCartProduct = () => {
-    addCartProduct(title)
+    addCartProduct(title);
     hideProduct();
-  }
+  };
 
   const handleHideProduct = () => {
     hideProduct();
@@ -16,7 +16,7 @@ const ProductDetail = ({ addCartProduct, productDetails, hideProduct }) => {
   return (
     <>
       <Stack
-        className="absolute flex items-center inset-0 bg-white z-10"
+        className="absolute flex flex-wrap justify-center items-center inset-0  bg-white z-10"
         spacing={2}
         direction="row"
         sx={{ padding: "1em" }}
@@ -27,7 +27,7 @@ const ProductDetail = ({ addCartProduct, productDetails, hideProduct }) => {
           fontSize="large"
           onClick={handleHideProduct}
         />
-        <a className="basis-1/2" href={image} target="blank">
+        <a className="basis-1/1" href={image} target="blank">
           <ButtonBase
             className="w-full"
             sx={{
@@ -39,7 +39,7 @@ const ProductDetail = ({ addCartProduct, productDetails, hideProduct }) => {
           </ButtonBase>
         </a>
         <Stack
-          className="basis-1/2 h-max border-y border-slate-400"
+          className="basis-1/1 h-max border-y border-slate-400"
           sx={{ padding: "1em" }}
           spacing={2}
         >

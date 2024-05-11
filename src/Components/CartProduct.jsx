@@ -4,7 +4,7 @@ import propTypes from "prop-types";
 const CartProduct = ({ title, image, price, deleteCartProduct }) => {
   const handleRemoveCartProduct = () => {
     deleteCartProduct(title);
-  }
+  };
   return (
     <Stack
       spacing={1}

@@ -15,7 +15,7 @@ const Cart = ({ deleteCartProduct, cartProducts, hideCart }) => {
         boxShadow:
           "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;",
       }}
-      className="absolute overflow-y-scroll inset-y-0 right-0 w-1/3 bg-white"
+      className="cart-box absolute overflow-y-scroll inset-y-0 right-0 w-1/1 sm:w-1/2 md:w-1/3 bg-white"
     >
       <Cancel
         className="absolute top-2 right-2 cursor-pointer"
@@ -32,15 +32,12 @@ const Cart = ({ deleteCartProduct, cartProducts, hideCart }) => {
       ) : (
         <>
           <Stack direction="row" spacing={2} color="text.secondary">
-            <Typography sx={{ fontWeight: "600", fontSize: "1.5em" }}>
-              Total Amount :
-            </Typography>
-            <Typography sx={{ fontWeight: "600", fontSize: "1.5em" }}>
+            <Typography sx={{ fontSize: "1.3em" }}>Total Amount :</Typography>
+            <Typography sx={{ fontSize: "1.3em" }}>
               ₹
-              {(cartProducts.reduce(
-                (curPrice, product) => curPrice + product.price,
-                0
-              )).toFixed(2)}
+              {cartProducts
+                .reduce((curPrice, product) => curPrice + product.price, 0)
+                .toFixed(2)}
             </Typography>
           </Stack>
           <Stack spacing={2}>

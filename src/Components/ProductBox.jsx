@@ -33,8 +33,19 @@ const ProductBox = ({
 
   return (
     <Stack className="flex flex-col gap-y-5 items-center">
+      <Pagination
+        className="border border-slate-400 rounded-full"
+        sx={{ padding: "5px 10px" }}
+        count={page}
+        defaultPage={1}
+        hideNextButton
+        hidePrevButton
+        onClick={handlePageChange}
+        variant="outlined"
+        color="primary"
+      />
       <Stack
-        className="flex flex-wrap justify-center item-center gap-6"
+        className="flex flex-wrap md:flex-col justify-center item-center gap-6"
         direction="row"
       >
         {products.length === 0 ? (
@@ -62,17 +73,6 @@ const ProductBox = ({
           })
         )}
       </Stack>
-      <Pagination
-        className="border border-slate-400 rounded-full"
-        sx={{ padding: "5px 10px" }}
-        count={page}
-        defaultPage={1}
-        hideNextButton
-        hidePrevButton
-        onClick={handlePageChange}
-        variant="outlined"
-        color="primary"
-      />
     </Stack>
   );
 };

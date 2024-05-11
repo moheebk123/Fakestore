@@ -21,13 +21,14 @@ const Product = ({
   };
 
   const handleChangeCartProduct = () => {
-    addCartProduct(title)
-  }
+    addCartProduct(title);
+  };
 
   return (
     <Card
-      className="basis-1/3"
+      className=" min-w-72 w-72 basis-1/2 md:basis-1/3"
       sx={{
+        paddingBlock: "1em",
         boxShadow:
           "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 10px 0px",
       }}

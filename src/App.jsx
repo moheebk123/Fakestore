@@ -14,7 +14,7 @@ const App = () => {
   const [cartProducts, setCartProducts] = useState([]);
   const [productDetails, setProductDetails] = useState({});
   const [showProductDetails, setShowProductDetails] = useState(false);
-  const [showCartBox, setShowCartBox] = useState(true);
+  const [showCartBox, setShowCartBox] = useState(false);
 
   useEffect(() => {
     const getProducts = async () => {

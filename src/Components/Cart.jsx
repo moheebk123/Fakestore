@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { Cancel } from "@mui/icons-material";
 import propTypes from "prop-types";
 import CartProduct from "./CartProduct";
@@ -30,20 +30,34 @@ const Cart = ({ deleteCartProduct, cartProducts, hideCart }) => {
           Start Adding Product in Cart
         </h1>
       ) : (
-        <Stack spacing={2}>
-          {cartProducts.map((product, index) => {
-            const { title, image, price } = product;
-            return (
-              <CartProduct
-                key={index}
-                title={title}
-                image={image}
-                price={price}
-                deleteCartProduct={deleteCartProduct}
-              />
-            );
-          })}
-        </Stack>
+        <>
+          <Stack direction="row" spacing={2} color="text.secondary">
+            <Typography sx={{ fontWeight: "600", fontSize: "1.5em" }}>
+              Total Amount :
+            </Typography>
+            <Typography sx={{ fontWeight: "600", fontSize: "1.5em" }}>
+              ₹
+              {(cartProducts.reduce(
+                (curPrice, product) => curPrice + product.price,
+                0
+              )).toFixed(2)}
+            </Typography>
+          </Stack>
+          <Stack spacing={2}>
+            {cartProducts.map((product, index) => {
+              const { title, image, price } = product;
+              return (
+                <CartProduct
+                  key={index}
+                  title={title}
+                  image={image}
+                  price={price}
+                  deleteCartProduct={deleteCartProduct}
+                />
+              );
+            })}
+          </Stack>
+        </>
       )}
     </Stack>
   );

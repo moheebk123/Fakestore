@@ -2,23 +2,19 @@ import axios from "axios";
 import Category from "./Components/Category";
 import Search from "./Components/Search";
 import ProductBox from "./Components/ProductBox";
-import { useEffect, useState } from "react";
 import ProductDetail from "./Components/ProductDetail";
+import Cart from "./Components/Cart";
+import { useEffect, useState } from "react";
+import { Badge, IconButton } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const App = () => {
   const [products, setProducts] = useState([]);
   const [defaultProducts, setDefaultProducts] = useState([]);
-  const [productDetails, setProductDetails] = useState({
-    title: "",
-    description: "",
-    image: "",
-    price: 0,
-    rating: {
-      rate: 0,
-      count: 0
-    }
-  });
+  const [cartProducts, setCartProducts] = useState([]);
+  const [productDetails, setProductDetails] = useState({});
   const [showProductDetails, setShowProductDetails] = useState(false);
+  const [showCartBox, setShowCartBox] = useState(true);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -58,6 +54,13 @@ const App = () => {
   const hideProduct = () => {
     setShowProductDetails(false);
   };
+  const showCart = () => {
+    setShowCartBox(true);
+  };
+
+  const hideCart = () => {
+    setShowCartBox(false);
+  };
 
   const changeProductDetails = (title) => {
     const detailProduct = products.filter((product) =>
@@ -67,19 +70,57 @@ const App = () => {
     setProductDetails(newProductDetail);
   };
 
+  const addCartProduct = (title) => {
+    const updatedProduct = products.filter((product) =>
+      product.title.includes(title)
+    );
+    const newCartProduct = updatedProduct[0];
+    setCartProducts((prev) =>[ newCartProduct, ...prev ]);
+  };
+
+  const deleteCartProduct = (title) => {
+    const newCartProduct = cartProducts.filter((product) =>
+      !product.title.includes(title)
+    );
+    setCartProducts(newCartProduct);
+  };
+
   return (
     <>
+      <IconButton
+        className="absolute cursor-pointer"
+        sx={{ position: "absolute", top: "1em", right: "1em" }}
+        aria-label="cart"
+        onClick={showCart}
+      >
+        <Badge
+          badgeContent={cartProducts.length}
+          sx={{ zIndex: "0" }}
+          color="primary"
+        >
+          <ShoppingCartIcon />
+        </Badge>
+      </IconButton>
       <Search searchProduct={searchProduct} />
       <Category changeCategory={changeCategory} />
       <ProductBox
         showProduct={showProduct}
         changeProductDetails={changeProductDetails}
+        addCartProduct={addCartProduct}
         products={products}
       />
       {showProductDetails && (
         <ProductDetail
           productDetails={productDetails}
           hideProduct={hideProduct}
+          addCartProduct={addCartProduct}
+        />
+      )}
+      {showCartBox && (
+        <Cart
+          deleteCartProduct={deleteCartProduct}
+          cartProducts={cartProducts}
+          hideCart={hideCart}
         />
       )}
     </>

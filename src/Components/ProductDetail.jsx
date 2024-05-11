@@ -2,15 +2,21 @@ import { Stack, ButtonBase, Typography, Button } from "@mui/material";
 import { Star, PeopleAlt, AddShoppingCart, Cancel } from "@mui/icons-material";
 import propTypes from "prop-types";
 
-const ProductDetail = ({ productDetails, hideProduct }) => {
+const ProductDetail = ({ addCartProduct, productDetails, hideProduct }) => {
   const { title, description, category, price, image, rating } = productDetails;
+
+  const handleChangeCartProduct = () => {
+    addCartProduct(title)
+    hideProduct();
+  }
+
   const handleHideProduct = () => {
     hideProduct();
   };
   return (
     <>
       <Stack
-        className="absolute flex items-center inset-0 bg-white"
+        className="absolute flex items-center inset-0 bg-white z-10"
         spacing={2}
         direction="row"
         sx={{ padding: "1em" }}
@@ -44,7 +50,11 @@ const ProductDetail = ({ productDetails, hideProduct }) => {
           <Typography sx={{ fontWeight: "600", fontSize: "1.7em" }}>
             ₹ {price}
           </Typography>
-          <Typography className="capitalize" color="text.secondary" sx={{ fontWeight: "600" }}>
+          <Typography
+            className="capitalize"
+            color="text.secondary"
+            sx={{ fontWeight: "600" }}
+          >
             Category : {category}
           </Typography>
           <Stack
@@ -66,7 +76,7 @@ const ProductDetail = ({ productDetails, hideProduct }) => {
           >
             <PeopleAlt /> Rated: {rating.count}
           </Typography>
-          <Button variant="contained">
+          <Button variant="contained" onClick={handleChangeCartProduct}>
             <AddShoppingCart sx={{ marginRight: "1em" }} />
             Add to Cart
           </Button>
@@ -78,6 +88,7 @@ const ProductDetail = ({ productDetails, hideProduct }) => {
 
 ProductDetail.propTypes = {
   hideProduct: propTypes.func.isRequired,
+  addCartProduct: propTypes.func.isRequired,
   productDetails: propTypes.shape({
     title: propTypes.string.isRequired,
     description: propTypes.string.isRequired,

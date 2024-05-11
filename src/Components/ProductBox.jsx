@@ -3,7 +3,12 @@ import Product from "./Product";
 import { Stack, Pagination } from "@mui/material";
 import { useEffect, useState } from "react";
 
-const ProductBox = ({ changeProductDetails, showProduct, products }) => {
+const ProductBox = ({
+  addCartProduct,
+  changeProductDetails,
+  showProduct,
+  products,
+}) => {
   useEffect(() => {
     setPage(() => {
       return Math.ceil(products.length / 4);
@@ -49,6 +54,7 @@ const ProductBox = ({ changeProductDetails, showProduct, products }) => {
                   price={price}
                   rating={rating}
                   showProduct={showProduct}
+                  addCartProduct={addCartProduct}
                   changeProductDetails={changeProductDetails}
                 />
               );
@@ -75,6 +81,7 @@ ProductBox.propTypes = {
   products: propTypes.array.isRequired,
   showProduct: propTypes.func.isRequired,
   changeProductDetails: propTypes.func.isRequired,
+  addCartProduct: propTypes.func.isRequired,
 };
 
 export default ProductBox;

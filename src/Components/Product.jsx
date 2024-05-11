@@ -13,11 +13,16 @@ const Product = ({
   price,
   showProduct,
   changeProductDetails,
+  addCartProduct,
 }) => {
   const handleProductPage = () => {
     showProduct();
     changeProductDetails(title);
   };
+
+  const handleChangeCartProduct = () => {
+    addCartProduct(title)
+  }
 
   return (
     <Card
@@ -47,6 +52,7 @@ const Product = ({
           color="primary"
           sx={{ marginInline: "auto" }}
           variant="contained"
+          onClick={handleChangeCartProduct}
         >
           Add To Cart
         </Button>
@@ -61,6 +67,7 @@ Product.propTypes = {
   price: propTypes.number.isRequired,
   showProduct: propTypes.func.isRequired,
   changeProductDetails: propTypes.func.isRequired,
+  addCartProduct: propTypes.func.isRequired,
 };
 
 export default Product;

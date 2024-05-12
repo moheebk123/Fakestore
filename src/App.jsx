@@ -1,12 +1,12 @@
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Category from "./Components/Category";
 import Search from "./Components/Search";
 import ProductBox from "./Components/ProductBox";
 import ProductDetail from "./Components/ProductDetail";
 import Cart from "./Components/Cart";
-import { useEffect, useState } from "react";
-import { Badge, IconButton } from "@mui/material";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import OpenCart from "./Components/OpenCart";
+import ProductFunctionsContext from "./store/ProductFunctionsContext";
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -27,15 +27,20 @@ const App = () => {
     getProducts();
   }, []);
 
-  const changeCategory = (category) => {
-    if (category !== "all") {
-      const categoryProducts = defaultProducts.filter(
-        (product) => product.category === category
-      );
-      setProducts(categoryProducts);
-    } else {
-      setProducts(defaultProducts);
-    }
+  const showProduct = () => {
+    setShowProductDetails(true);
+  };
+
+  const hideProduct = () => {
+    setShowProductDetails(false);
+  };
+
+  const showCart = () => {
+    setShowCartBox(true);
+  };
+
+  const hideCart = () => {
+    setShowCartBox(false);
   };
 
   const searchProduct = (searchedName) => {
@@ -47,19 +52,15 @@ const App = () => {
     setProducts(searchedProducts);
   };
 
-  const showProduct = () => {
-    setShowProductDetails(true);
-  };
-
-  const hideProduct = () => {
-    setShowProductDetails(false);
-  };
-  const showCart = () => {
-    setShowCartBox(true);
-  };
-
-  const hideCart = () => {
-    setShowCartBox(false);
+  const changeCategory = (category) => {
+    if (category !== "all") {
+      const categoryProducts = defaultProducts.filter(
+        (product) => product.category === category
+      );
+      setProducts(categoryProducts);
+    } else {
+      setProducts(defaultProducts);
+    }
   };
 
   const changeProductDetails = (title) => {
@@ -87,42 +88,27 @@ const App = () => {
 
   return (
     <>
-      <IconButton
-        className="absolute cursor-pointer"
-        sx={{ position: "absolute", top: "1em", right: "1em" }}
-        aria-label="cart"
-        onClick={showCart}
-      >
-        <Badge
-          badgeContent={cartProducts.length}
-          sx={{ zIndex: "0" }}
-          color="primary"
-        >
-          <ShoppingCartIcon />
-        </Badge>
-      </IconButton>
+      <OpenCart cartProductsLength={cartProducts.length} showCart={showCart} />
       <Search searchProduct={searchProduct} />
       <Category changeCategory={changeCategory} />
-      <ProductBox
-        showProduct={showProduct}
-        changeProductDetails={changeProductDetails}
-        addCartProduct={addCartProduct}
-        products={products}
-      />
-      {showProductDetails && (
-        <ProductDetail
-          productDetails={productDetails}
-          hideProduct={hideProduct}
-          addCartProduct={addCartProduct}
-        />
-      )}
-      {showCartBox && (
-        <Cart
-          deleteCartProduct={deleteCartProduct}
-          cartProducts={cartProducts}
-          hideCart={hideCart}
-        />
-      )}
+      <ProductFunctionsContext.Provider
+        value={{
+          addCartProduct,
+          deleteCartProduct,
+          changeProductDetails,
+          showProduct,
+          hideCart,
+        }}
+      >
+        <ProductBox products={products} />
+        {showProductDetails && (
+          <ProductDetail
+            productDetails={productDetails}
+            hideProduct={hideProduct}
+          />
+        )}
+        {showCartBox && <Cart cartProducts={cartProducts} />}
+      </ProductFunctionsContext.Provider>
     </>
   );
 };

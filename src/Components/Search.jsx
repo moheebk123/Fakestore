@@ -1,7 +1,7 @@
-import SearchIcon from "@mui/icons-material/Search";
+import React, { useRef } from "react";
 import propTypes from "prop-types";
+import SearchIcon from "@mui/icons-material/Search";
 import { Stack, Divider, Tooltip, IconButton } from "@mui/material";
-import { useRef } from "react";
 
 const Search = ({ searchProduct }) => {
   const productName = useRef();

@@ -1,3 +1,6 @@
+import React, { useContext } from "react";
+import propTypes from "prop-types";
+import ProductFunctionsContext from "../store/ProductFunctionsContext";
 import {
   Card,
   Typography,
@@ -5,22 +8,18 @@ import {
   CardActionArea,
   CardActions,
 } from "@mui/material";
-import propTypes from "prop-types";
 
-const Product = ({
-  title,
-  image,
-  price,
-  showProduct,
-  changeProductDetails,
-  addCartProduct,
-}) => {
+const Product = ({ title, image, price }) => {
+  const { addCartProduct, changeProductDetails, showProduct, hideCart } =
+    useContext(ProductFunctionsContext);
+
   const handleProductPage = () => {
     showProduct();
+    hideCart();
     changeProductDetails(title);
   };
 
-  const handleChangeCartProduct = () => {
+  const handleAddCartProduct = () => {
     addCartProduct(title);
   };
 
@@ -53,7 +52,7 @@ const Product = ({
           color="primary"
           sx={{ marginInline: "auto" }}
           variant="contained"
-          onClick={handleChangeCartProduct}
+          onClick={handleAddCartProduct}
         >
           Add To Cart
         </Button>
@@ -66,9 +65,6 @@ Product.propTypes = {
   title: propTypes.string.isRequired,
   image: propTypes.string.isRequired,
   price: propTypes.number.isRequired,
-  showProduct: propTypes.func.isRequired,
-  changeProductDetails: propTypes.func.isRequired,
-  addCartProduct: propTypes.func.isRequired,
 };
 
 export default Product;

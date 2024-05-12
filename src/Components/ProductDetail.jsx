@@ -1,28 +1,33 @@
+import React, { useContext } from "react";
+import propTypes from "prop-types";
+import ProductFunctionsContext from "../store/ProductFunctionsContext";
 import { Stack, ButtonBase, Typography, Button } from "@mui/material";
 import { Star, PeopleAlt, AddShoppingCart, Cancel } from "@mui/icons-material";
-import propTypes from "prop-types";
 
-const ProductDetail = ({ addCartProduct, productDetails, hideProduct }) => {
+const ProductDetail = ({ productDetails, hideProduct }) => {
   const { title, description, category, price, image, rating } = productDetails;
 
-  const handleChangeCartProduct = () => {
+  const { hideCart, addCartProduct } = useContext(ProductFunctionsContext);
+
+  const handleAddCartProduct = () => {
     addCartProduct(title);
-    hideProduct();
   };
 
   const handleHideProduct = () => {
     hideProduct();
+    hideCart();
   };
+
   return (
     <>
       <Stack
-        className="absolute flex flex-wrap justify-center items-center inset-0  bg-white z-10"
+        className="absolute flex flex-wrap justify-center items-center inset-0  bg-white"
         spacing={2}
         direction="row"
         sx={{ padding: "1em" }}
       >
         <Cancel
-          className="absolute top-2 right-2 cursor-pointer"
+          className="absolute top-2 left-2 cursor-pointer"
           color="error"
           fontSize="large"
           onClick={handleHideProduct}
@@ -76,7 +81,7 @@ const ProductDetail = ({ addCartProduct, productDetails, hideProduct }) => {
           >
             <PeopleAlt /> Rated: {rating.count}
           </Typography>
-          <Button variant="contained" onClick={handleChangeCartProduct}>
+          <Button variant="contained" onClick={handleAddCartProduct}>
             <AddShoppingCart sx={{ marginRight: "1em" }} />
             Add to Cart
           </Button>
@@ -88,7 +93,6 @@ const ProductDetail = ({ addCartProduct, productDetails, hideProduct }) => {
 
 ProductDetail.propTypes = {
   hideProduct: propTypes.func.isRequired,
-  addCartProduct: propTypes.func.isRequired,
   productDetails: propTypes.shape({
     title: propTypes.string.isRequired,
     description: propTypes.string.isRequired,

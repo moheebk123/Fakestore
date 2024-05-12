@@ -1,17 +1,13 @@
+import React, { useState } from "react";
 import propTypes from "prop-types";
-import { useState } from "react";
 import { AppBar, Tabs, Tab } from "@mui/material";
 
 const Category = ({ changeCategory }) => {
   const [value, setValue] = useState(0);
 
-  const handleChange = (event, newValue) => {
+  const handleCategoryChange = (event, newValue) => {
+    changeCategory(event.target.textContent);
     setValue(newValue);
-  };
-
-  const handleCategoryChange = (event) => {
-    const category = event.target.textContent;
-    changeCategory(category);
   };
 
   return (
@@ -22,16 +18,16 @@ const Category = ({ changeCategory }) => {
     >
       <Tabs
         value={value}
-        onChange={handleChange}
+        onChange={handleCategoryChange}
         indicatorColor="primary"
         textColor="primary"
         variant="fullWidth"
       >
-        <Tab label="all" onClick={handleCategoryChange} />
-        <Tab label="electronics" onClick={handleCategoryChange} />
-        <Tab label="jewelery" onClick={handleCategoryChange} />
-        <Tab label="men's clothing" onClick={handleCategoryChange} />
-        <Tab label="women's clothing" onClick={handleCategoryChange} />
+        <Tab label="all" />
+        <Tab label="electronics" />
+        <Tab label="jewelery" />
+        <Tab label="men's clothing" />
+        <Tab label="women's clothing" />
       </Tabs>
     </AppBar>
   );

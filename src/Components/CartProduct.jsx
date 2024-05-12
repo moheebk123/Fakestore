@@ -1,10 +1,15 @@
-import { Button, Stack, Typography } from "@mui/material";
+import React, { useContext } from "react";
 import propTypes from "prop-types";
+import ProductFunctionsContext from "../store/ProductFunctionsContext";
+import { Button, Stack, Typography } from "@mui/material";
 
-const CartProduct = ({ title, image, price, deleteCartProduct }) => {
-  const handleRemoveCartProduct = () => {
+const CartProduct = ({ title, image, price }) => {
+  const { deleteCartProduct } = useContext(ProductFunctionsContext);
+
+  const handleDeleteCartProduct = () => {
     deleteCartProduct(title);
   };
+
   return (
     <Stack
       spacing={1}
@@ -17,7 +22,7 @@ const CartProduct = ({ title, image, price, deleteCartProduct }) => {
       <Typography className="text-center" sx={{ fontWeight: "600" }}>
         ₹ {price}
       </Typography>
-      <Button onClick={handleRemoveCartProduct} variant="contained">
+      <Button onClick={handleDeleteCartProduct} variant="contained">
         Remove
       </Button>
     </Stack>
@@ -28,7 +33,6 @@ CartProduct.propTypes = {
   title: propTypes.string.isRequired,
   image: propTypes.string.isRequired,
   price: propTypes.number.isRequired,
-  deleteCartProduct: propTypes.func.isRequired,
 };
 
 export default CartProduct;

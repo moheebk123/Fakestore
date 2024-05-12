@@ -1,26 +1,22 @@
+import React, { useEffect, useState } from "react";
 import propTypes from "prop-types";
 import Product from "./Product";
+import EmptyProduct from "./EmptyProduct";
 import { Stack, Pagination } from "@mui/material";
-import { useEffect, useState } from "react";
 
-const ProductBox = ({
-  addCartProduct,
-  changeProductDetails,
-  showProduct,
-  products,
-}) => {
+const ProductBox = ({ products }) => {
+  const [page, setPage] = useState();
+  const [productIndex, setProductIndex] = useState({
+    startIndex: 0,
+    endIndex: 3,
+  });
+
   useEffect(() => {
     setPage(() => {
       return Math.ceil(products.length / 4);
     });
     setProductIndex({ startIndex: 0, endIndex: 3 });
   }, [products]);
-
-  const [page, setPage] = useState();
-  const [productIndex, setProductIndex] = useState({
-    startIndex: 0,
-    endIndex: 3,
-  });
 
   const handlePageChange = (event) => {
     if (event.target.tagName === "BUTTON") {
@@ -49,10 +45,10 @@ const ProductBox = ({
         direction="row"
       >
         {products.length === 0 ? (
-          <h1 className="text-2xl">Product Not Present In This Category</h1>
+          <EmptyProduct />
         ) : (
           products.map((product, index) => {
-            const { title, image, price, rating } = product;
+            const { title, image, price } = product;
             if (
               productIndex.startIndex <= index &&
               productIndex.endIndex >= index
@@ -63,10 +59,6 @@ const ProductBox = ({
                   title={title}
                   image={image}
                   price={price}
-                  rating={rating}
-                  showProduct={showProduct}
-                  addCartProduct={addCartProduct}
-                  changeProductDetails={changeProductDetails}
                 />
               );
             }
@@ -79,9 +71,6 @@ const ProductBox = ({
 
 ProductBox.propTypes = {
   products: propTypes.array.isRequired,
-  showProduct: propTypes.func.isRequired,
-  changeProductDetails: propTypes.func.isRequired,
-  addCartProduct: propTypes.func.isRequired,
 };
 
 export default ProductBox;

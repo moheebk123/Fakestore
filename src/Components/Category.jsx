@@ -16,16 +16,17 @@ const Category = ({ changeCategory }) => {
 
   return (
     <AppBar
-      className="rounded-full overflow-hidden"
+      className="rounded-full w-fit overflow-hidden"
       position="static"
       color="default"
+      sx={{width: "fit-content"}}
     >
       <Tabs
         value={value}
         onChange={handleCategoryChange}
         indicatorColor="primary"
         textColor="primary"
-        variant="fullWidth"
+        variant="scrollable"
       >
         <Tab label="all" />
         <Tab label="electronics" />

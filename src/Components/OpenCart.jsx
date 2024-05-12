@@ -19,10 +19,9 @@ const OpenCart = ({ showCart, cartProductsLength }) => {
     >
       <Badge
         badgeContent={cartProductsLength}
-        sx={{ zIndex: "0" }}
         color="primary"
       >
-        <ShoppingCartIcon />
+        <ShoppingCartIcon  />
       </Badge>
     </IconButton>
   );

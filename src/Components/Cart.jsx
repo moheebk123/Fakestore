@@ -1,3 +1,8 @@
+/*
+The React component named `Cart` that represents a shopping cart interface.
+It shows the total price of the products present in cart and  a list of products present in cart.
+If cart is empty it shows the empty cart message.
+*/
 import React, { useContext } from "react";
 import propTypes from "prop-types";
 import CartProduct from "./CartProduct";

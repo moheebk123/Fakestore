@@ -3,6 +3,8 @@ import propTypes from "prop-types";
 import SearchIcon from "@mui/icons-material/Search";
 import { Stack, Divider, Tooltip, IconButton } from "@mui/material";
 
+/* This is a React component called `Search` that represents a search input field with a
+search button. It is used to search a product based on the name */
 const Search = ({ searchProduct }) => {
   const productName = useRef();
 

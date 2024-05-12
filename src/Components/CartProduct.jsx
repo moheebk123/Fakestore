@@ -1,3 +1,4 @@
+/* The React component named `CartProduct`displays products information such as title, image, and price and allows users to delete the product from a cart.*/
 import React, { useContext } from "react";
 import propTypes from "prop-types";
 import ProductFunctionsContext from "../store/ProductFunctionsContext";

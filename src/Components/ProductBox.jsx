@@ -1,3 +1,4 @@
+/* The React component named `ProductBox` that displays a list of products with dynamic pagination. */
 import React, { useEffect, useState } from "react";
 import propTypes from "prop-types";
 import Product from "./Product";
@@ -11,6 +12,8 @@ const ProductBox = ({ products }) => {
     endIndex: 3,
   });
 
+  /* The `useEffect` hook is used to update the state variables `page` for dynamic pagination and
+  `productIndex` for dynamic products list, whenever the `products` (product list) prop changes. */
   useEffect(() => {
     setPage(() => {
       return Math.ceil(products.length / 4);
@@ -18,6 +21,7 @@ const ProductBox = ({ products }) => {
     setProductIndex({ startIndex: 0, endIndex: 3 });
   }, [products]);
 
+  /*The handlePageChange function updates the product index based on the button clicked in a React component.*/
   const handlePageChange = (event) => {
     if (event.target.tagName === "BUTTON") {
       const label = event.target.ariaLabel;

@@ -1,3 +1,4 @@
+/* This React component named `ProductDetail` that displays detailed information about a product.*/
 import React, { useContext } from "react";
 import propTypes from "prop-types";
 import ProductFunctionsContext from "../store/ProductFunctionsContext";

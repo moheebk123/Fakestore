@@ -1,3 +1,4 @@
+/*The EmptyCart component in React displays a message indicating that the cart is empty and prompts the user to start adding products in cart.*/
 import React from "react";
 
 const EmptyCart = () => {

@@ -1,3 +1,6 @@
+/*The React component named `Product` displays product information such as title, image, and price in a Material-UI Card component and allows users to add the product to the cart.
+Additionaly, It calls the handleProductPage function to open Product Detail Page
+ */
 import React, { useContext } from "react";
 import propTypes from "prop-types";
 import ProductFunctionsContext from "../store/ProductFunctionsContext";

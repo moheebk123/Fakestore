@@ -1,3 +1,7 @@
+/*
+The `Category` component renders a tab-based category selection interface and
+calls the `changeCategory` function when a tab is clicked to show products based on category.
+*/
 import React, { useState } from "react";
 import propTypes from "prop-types";
 import { AppBar, Tabs, Tab } from "@mui/material";

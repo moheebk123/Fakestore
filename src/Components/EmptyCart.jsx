@@ -3,9 +3,10 @@ import React from "react";
 
 const EmptyCart = () => {
   return (
-    <h1 className="text-center text-xl h-full flex justify-center items-center">
+    // <h1 className="text-center text-xl h-full flex justify-center items-center">
+    <h1 className="text-center text-xl">
       Nothing Present In Cart <br />
-      Start Adding Product in Cart
+      Start Adding Products in Cart
     </h1>
   );
 };

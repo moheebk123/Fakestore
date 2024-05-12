@@ -10,7 +10,6 @@
 <li>JavaScript</li>
 <li>TailwindCSS</li>
 <li>React</li>
-<li>Axios</li>
 <li>Material UI</li>
 <br/>
 <hr/>

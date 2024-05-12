@@ -12,8 +12,8 @@ const OpenCart = ({ showCart, cartProductsLength }) => {
   };
   return (
     <IconButton
-      className="absolute cursor-pointer z-5"
-      sx={{ position: "absolute", top: "1em", right: "1em" }}
+      className="absolute cursor-pointer z-15"
+      sx={{ position: "absolute", top: "10px", right: "10px" }}
       aria-label="cart"
       onClick={handleOpenCart}
     >

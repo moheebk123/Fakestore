@@ -26,7 +26,7 @@ const Cart = ({ cartProducts }) => {
         boxShadow:
           "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;",
       }}
-      className="cart-box z-10 absolute overflow-y-scroll inset-y-0 right-0 w-1/1 sm:w-1/2 md:w-1/3 bg-white z-5"
+      className="cart-box z-20 absolute overflow-y-scroll inset-y-0 right-0 w-1/1 sm:w-1/2 md:w-1/3 bg-white z-5"
     >
       <Cancel
         className="absolute top-2 right-2 cursor-pointer"

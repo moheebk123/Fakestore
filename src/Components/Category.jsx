@@ -22,7 +22,7 @@ const Category = ({ changeCategory }) => {
         textColor="primary"
       variant="scrollable"
       sx={{boxShadow: "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px"}}
-      className="sm:w-full md:w-fit bg-gray-100 rounded-full"
+      className="w-full md:w-fit bg-gray-100 rounded-full"
       >
         <Tab label="all" />
         <Tab label="electronics" />

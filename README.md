@@ -14,25 +14,15 @@
 <br/>
 <hr/>
 <h2>Features of this projects are given below:</h2>
-<li>It display's a <b>List of Products</b> retrieved from https://fakestoreapi.com.</li>
-<li>It provides a feature to <b>Search Product by Name</b>, in a <b>Specific Category</b>.</li>
-<li>It provides a feature to <b>Filter Products by Category</b>.</li>
-<li>It allow users to view <b>Product Details</b> such as
-<dl>
-  <dd><b>- Product Name</b></dd>
-  <dd><b>- Product Image</b></dd>
-  <dd><b>- </b>Product Description</dd>
-  <dd><b>- Price</b></dd>
-  <dd><b>- Ratings</b></dd>
-  <dd><b>- How Many People Rated</b></dd>
-</dl>
-by clicking on Product.
-</li>
-<li>It allow users to view <b>Cart</b> by clicking on cart button.</li>
-<li>It provides a feature to <b>Add Product in a Cart</b> by clicking on <b>Add to Cart</b> button on <b>Product</b> and in <b>Product Detail Page</b>.</li>
-<li>It provides a feature to <b>Delete Product from a Cart</b> by clicking on <b>Remove</b> button on <b>Product</b> in <b>Cart</b>.</li>
-<li>It shows the <b>Total Amount</b> of <b>Cart Products</b>.</li>
-<li>It is <b>Fully Responsive</b>.</li>
+<li><b>Shows List of Products</b></li>
+<li><b>Search Product by Name in a Specific Category</b></li>
+<li><b>Filter Products by Category</b></li>
+<li><b>Product Details Page for more information about selected product</b></li>
+<li><b>View Cart</b></li>
+<li><b>Add Product in a Cart</b></li>
+<li><b>Delete Product from a Cart</b></li>
+<li><b>Shows Total Amount of Cart Products</b></li>
+<li><b>Fully Responsive</b></li>
 <br/>
 <hr/>
 <h2>If you want to run this application in your system, Follow the below steps:</h2>

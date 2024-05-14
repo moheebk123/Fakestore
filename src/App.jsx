@@ -4,14 +4,20 @@ import Cart from "./pages/Cart/Cart";
 import Home from "./pages/Home/Home";
 import ProductDetail from "./pages/Product/ProductDetail";
 import ProductFunctionsContext from "./store/ProductFunctionsContext";
+import PreLoader from "./Components/PreLoader";
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
   const [defaultProducts, setDefaultProducts] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
   const [productDetails, setProductDetails] = useState({});
   const [showProductDetails, setShowProductDetails] = useState(false);
 
   useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 4000);
+
     const getProducts = async () => {
       const res = await axios.get("https://fakestoreapi.com/products/");
       setDefaultProducts(res.data);
@@ -49,17 +55,26 @@ const App = () => {
 
   return (
     <>
-      <ProductFunctionsContext.Provider
-        value={{
-          addCartProduct,
-          deleteCartProduct,
-          changeProductDetails,
-        }}
-      >
-        <Home defaultProducts={defaultProducts} />
-        <Cart cartProducts={cartProducts} />
-        {showProductDetails && <ProductDetail productDetails={productDetails} hideProduct={hideProduct} />}
-      </ProductFunctionsContext.Provider>
+      {loading ? (
+        <PreLoader />
+      ) : (
+        <ProductFunctionsContext.Provider
+          value={{
+            addCartProduct,
+            deleteCartProduct,
+            changeProductDetails,
+          }}
+        >
+          <Home defaultProducts={defaultProducts} />
+          <Cart cartProducts={cartProducts} />
+          {showProductDetails && (
+            <ProductDetail
+              productDetails={productDetails}
+              hideProduct={hideProduct}
+            />
+          )}
+        </ProductFunctionsContext.Provider>
+      )}
     </>
   );
 };

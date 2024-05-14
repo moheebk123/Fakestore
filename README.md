@@ -39,8 +39,8 @@
   </li>
   <br/>
   <li>
-    Run the below command to change Project Directory to Application
-    Directory<br />"cd .\Fakestore-Project\"
+    Run the below command to change directory
+    <br />"cd .\Fakestore-Project\"
   </li>
   <br/>
   <li>

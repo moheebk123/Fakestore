@@ -1,0 +1,16 @@
+.category-box {
+  padding-top: 1em;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #e0e9f5;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #4292fc;
+    border-radius: 15px;
+  }
+}

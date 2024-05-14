@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* This code block is universaly targeting all elements on the page. */
 * {
   margin: 0;
   padding: 0;
@@ -8,9 +7,6 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* This code block  is targeting the `body` element in the HTML structure.
-It sets the background color.
-Additionally, it uses `&::-webkit-scrollbar` to hide scrollbar. */
 body {
   background-color: #eee;
 
@@ -18,7 +14,6 @@ body {
     display: none;
   }
 
-  /* This code block is styling the element with the id "root" in HTML structure. */
   & #root {
     background-color: #fff;
     width: 100vw;
@@ -34,24 +29,5 @@ body {
     min-height: 100vh;
     position: relative;
     overflow: hidden;
-
-    /* The code is targeting elements with the class name "cart-box" within the
-    element with the id "root" in HTML structure. It is customizing the scrollbar appearance
-    for elements with the class "cart-box" using vendor-specific pseudo-elements for styling
-    scrollbars. */
-    & .cart-box {
-      &::-webkit-scrollbar {
-        width: 5px;
-      }
-
-      &::-webkit-scrollbar-track {
-        background: #e0e9f5;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background: #4292fc;
-        border-radius: 15px;
-      }
-    }
   }
 }

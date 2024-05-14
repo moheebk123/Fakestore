@@ -1,73 +1,45 @@
-/*The React component named `Product` displays product information such as title, image, and price in a Material-UI Card component and allows users to add the product to the cart.
-Additionaly, It calls the handleProductPage function to open Product Detail Page
- */
-import React, { useContext } from "react";
+import { useContext } from "react";
 import propTypes from "prop-types";
 import ProductFunctionsContext from "../store/ProductFunctionsContext";
-import {
-  Card,
-  Typography,
-  Button,
-  CardActionArea,
-  CardActions,
-} from "@mui/material";
 
-const Product = ({ title, image, price }) => {
-  const { addCartProduct, changeProductDetails, showProduct, hideCart } =
-    useContext(ProductFunctionsContext);
-
-  const handleProductPage = () => {
-    showProduct();
-    hideCart();
-    changeProductDetails(title);
-  };
-
-  const handleAddCartProduct = () => {
-    addCartProduct(title);
-  };
+const Product = ({ title, image, price, buttonText, addRemoveCartProduct }) => {
+  const { changeProductDetails } = useContext(ProductFunctionsContext);
 
   return (
-    <Card
-      className=" min-w-72 w-72 basis-1/2 md:basis-1/3"
-      sx={{
-        paddingBlock: "1em",
-        boxShadow:
-          "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 10px 0px",
-      }}
+    <div
+      className="flex flex-col items-center justify-center gap-y-1.5 w-72 h-80 shadow-lg rounded-lg"
+      style={{ padding: "1em" }}
     >
-      <CardActionArea onClick={handleProductPage}>
-        <img
-          src={image}
-          alt="product image"
-          className="h-40 w-full object-contain"
-        />
-        <div className="flex flex-col gap-y-2" style={{ padding: "1em" }}>
-          <Typography className="w-max" variant="h6" component="div">
-            {title}
-          </Typography>
-          <Typography variant="body1" color="text.secondary">
-            ₹ {price}
-          </Typography>
-        </div>
-      </CardActionArea>
-      <CardActions>
-        <Button
-          color="primary"
-          sx={{ marginInline: "auto" }}
-          variant="contained"
-          onClick={handleAddCartProduct}
-        >
-          Add To Cart
-        </Button>
-      </CardActions>
-    </Card>
+      <div
+        className="w-full h-32 cursor-pointer"
+        onClick={() => changeProductDetails(title)}
+      >
+        <img className="object-contain w-full h-full" src={image} />
+      </div>
+      <p className="text-center">{title}</p>
+      <p className="text-center font-bold">₹ {price}</p>
+      <button
+        type="button"
+        className={`cursor-pointer font-bold text-white rounded-md ${
+          buttonText === "Remove"
+            ? "bg-red-500 hover:bg-red-600"
+            : "bg-blue-500 hover:bg-blue-600"
+        }`}
+        style={{ padding: "0.5em 1em" }}
+        onClick={() => addRemoveCartProduct(title)}
+      >
+        {buttonText}
+      </button>
+    </div>
   );
 };
 
 Product.propTypes = {
   title: propTypes.string.isRequired,
   image: propTypes.string.isRequired,
+  buttonText: propTypes.string.isRequired,
   price: propTypes.number.isRequired,
+  addRemoveCartProduct: propTypes.func.isRequired,
 };
 
 export default Product;

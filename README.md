@@ -28,16 +28,10 @@
 <h2>If you want to run this application in your system, Follow the below steps:</h2>
 <h3>
 <ol type="1">
-  <li>
-    Choose a folder or directory in your sytem, or create a new folder or
-    directory.
-  </li>
   <br/>
   <li>
-    Open that forder or directory in VS Code.
+    Open a forder in a VS Code and go to the Terminal.
   </li>
-  <br/>
-  <li>Open VS Code Terminal with shortcut key :- " Ctrl + ` "</li>
   <br/>
   <li>
     Run the below command to clone repository
@@ -59,7 +53,6 @@
   </li>
   <br/>
   <li>
-    Go to the link provided by vite in terminal<br />by "Ctrl + click" or
-    searching the link in browser
+    Go to the link provided by vite in terminal.
   </li>
 </ol>

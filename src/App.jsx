@@ -16,7 +16,7 @@ const App = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 4000);
+    }, 4500);
 
     const getProducts = async () => {
       const res = await axios.get("https://fakestoreapi.com/products/");

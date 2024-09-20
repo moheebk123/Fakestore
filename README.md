@@ -1,6 +1,6 @@
 # FakeStore
 
-<h2>This is the Image of a FakeStore-Project</h2>
+<h2>This is the Image of a FakeStore</h2>
 <img src="./public/photo1.png" />
 <br/>
 <hr/>

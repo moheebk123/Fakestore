@@ -1,4 +1,4 @@
-# FakeStore-Project
+# FakeStore
 
 <h2>This is the Image of a FakeStore-Project</h2>
 <img src="./public/photo1.png" />
@@ -30,17 +30,17 @@
 <ol type="1">
   <br/>
   <li>
-    Open a forder in a VS Code and go to the Terminal.
+    Open a folder in a VS Code and go to the Terminal.
   </li>
   <br/>
   <li>
     Run the below command to clone repository
-    <br />"git clone https://github.com/moheebk123/Fakestore-Project.git"
+    <br />"git clone https://github.com/moheebk123/Fakestore.git"
   </li>
   <br/>
   <li>
     Run the below command to change directory
-    <br />"cd .\Fakestore-Project\"
+    <br />"cd .\Fakestore\"
   </li>
   <br/>
   <li>
